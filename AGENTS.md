@@ -1,4 +1,4 @@
-# agent.md – Crypto-Universal
+# agents.md – Crypto-Universal
 
 ## Objective  
 Create a universal encryption overlay that allows text messages to be encrypted/decrypted for any communication channel (WhatsApp, SMS, email, etc.), independently of the underlying transport application.

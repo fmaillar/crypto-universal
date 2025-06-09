@@ -11,8 +11,11 @@ pair can be generated once and reused across messaging apps.
 
 ## Installation
 
+Install the project along with its dependencies using `pip install .` from the
+repository root:
+
 ```
-pip install cryptography
+pip install .
 ```
 
 ## Usage
@@ -20,20 +23,20 @@ pip install cryptography
 Generate a key pair:
 
 ```
-python -m crypto_universal generate-keys
+crypto_universal generate-keys
 ```
 
 The first line of output is the base64 encoded private key and the second
 line is the base64 encoded public key.  Encrypt a message:
 
 ```
-python -m crypto_universal encrypt <base64-public-key> "hello"
+crypto_universal encrypt <base64-public-key> "hello"
 ```
 
 Decrypt a message:
 
 ```
-python -m crypto_universal decrypt <base64-private-key> <ciphertext>
+crypto_universal decrypt <base64-private-key> <ciphertext>
 ```
 
 You can integrate these calls into a custom keyboard or other overlay so

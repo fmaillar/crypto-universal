@@ -13,6 +13,7 @@ readme = "README.md"
 
 [project.scripts]
 crypto_universal = "crypto_universal.cli:main"
+keymanager = "keymanager:main"
 
 [tool.setuptools]
 package-dir = {"" = "src"}

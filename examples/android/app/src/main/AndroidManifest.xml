@@ -1,22 +1,27 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.securekeyboard">
 
-    <application android:label="Secure Keyboard">
-        <activity android:name=".MainActivity"
-            android:exported="true"
-            android:label="Secure Keyboard">
+
+    <application
+        android:label="Secure Keyboard"
+        android:allowBackup="true"
+        android:supportsRtl="true"
+        android:theme="@android:style/Theme.DeviceDefault.Light.NoActionBar">
+
+        <service
+            android:name=".SecureKeyboardService"
+            android:permission="android.permission.BIND_INPUT_METHOD">
+
+            <intent-filter>
+                <action android:name="android.view.InputMethod" />
+            </intent-filter>
+        </service>
+
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service
-            android:name=".SecureKeyboardService"
-            android:permission="android.permission.BIND_INPUT_METHOD"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="android.view.InputMethod" />
-            </intent-filter>
-        </service>
     </application>
 </manifest>

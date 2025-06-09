@@ -11,11 +11,8 @@ pair can be generated once and reused across messaging apps.
 
 ## Installation
 
-Install the project along with its dependencies using `pip install .` from the
-repository root:
-
 ```
-pip install .
+pip install cryptography
 ```
 
 ## Usage
@@ -23,20 +20,20 @@ pip install .
 Generate a key pair:
 
 ```
-crypto_universal generate-keys
+python -m crypto_universal generate-keys
 ```
 
 The first line of output is the base64 encoded private key and the second
 line is the base64 encoded public key.  Encrypt a message:
 
 ```
-crypto_universal encrypt <base64-public-key> "hello"
+python -m crypto_universal encrypt <base64-public-key> "hello"
 ```
 
 Decrypt a message:
 
 ```
-crypto_universal decrypt <base64-private-key> <ciphertext>
+python -m crypto_universal decrypt <base64-private-key> <ciphertext>
 ```
 
 You can integrate these calls into a custom keyboard or other overlay so
@@ -45,12 +42,17 @@ when received.
 
 ## Android Integration
 
-A minimal Gradle project is provided under `examples/android`. It implements a
-custom keyboard service that uses Crypto Universal to encrypt outgoing text. The
-keyboard exposes an "Encrypt" button which replaces the typed message with the
-encrypted ciphertext.
 
-Build the example with `./gradlew assembleDebug` and install the resulting APK
-on a device. Launch the `Secure Keyboard` app to enable the input method and
-then select it in the system settings. When active, you can compose a message,
-press "Encrypt" and send the ciphertext through any chat app.
+The `examples/android` directory contains a small Gradle project implementing a
+secure keyboard. After wiring in your RSA keys you can build and install it
+directly:
+
+```bash
+cd examples/android
+./gradlew installDebug
+```
+
+Launch the installed app and tap **Enable Secure Keyboard**. This opens the
+system input method settings so you can enable the keyboard. Once selected, any
+app can use the keyboard to encrypt text with the **Encrypt** button.
+

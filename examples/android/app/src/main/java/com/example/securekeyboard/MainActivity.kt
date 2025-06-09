@@ -1,9 +1,10 @@
 package com.example.securekeyboard
 
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
-import android.content.Intent
+
 import android.widget.Button
 
 class MainActivity : Activity() {
@@ -13,8 +14,8 @@ class MainActivity : Activity() {
         val button = Button(this).apply {
             text = "Enable Secure Keyboard"
             setOnClickListener {
-                val intent = Intent(Settings.ACTION_INPUT_METHOD_SETTINGS)
-                startActivity(intent)
+                startActivity(Intent(Settings.ACTION_INPUT_METHOD_SETTINGS))
+
             }
         }
         setContentView(button)

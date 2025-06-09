@@ -39,3 +39,16 @@ python -m crypto_universal decrypt <base64-private-key> <ciphertext>
 You can integrate these calls into a custom keyboard or other overlay so
 that messages are automatically encrypted before being sent and decrypted
 when received.
+
+## Android Integration
+
+A sample `InputMethodService` is provided under `examples/android`. It shows
+how to embed Crypto Universal in a custom keyboard so that any messaging
+application can encrypt outgoing text. The service loads an RSA key pair and
+replaces the typed message with the encrypted ciphertext when the user presses
+the "Encrypt" button.
+
+To try it out, copy `SecureKeyboardService.kt` into an Android project, register
+it in `AndroidManifest.xml` and load your keys from storage. When the keyboard
+is active, you can compose a message, press "Encrypt" and send the resulting
+ciphertext through any chat app.

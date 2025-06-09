@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "crypto-universal"
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = [
+    "cryptography",
+]
+readme = "README.md"
+
+[project.scripts]
+crypto_universal = "crypto_universal.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]

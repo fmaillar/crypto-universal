@@ -11,8 +11,11 @@ pair can be generated once and reused across messaging apps.
 
 ## Installation
 
+Install the project along with its dependencies using `pip install .` from the
+repository root:
+
 ```
-pip install cryptography
+pip install .
 ```
 
 ## Usage
@@ -20,20 +23,20 @@ pip install cryptography
 Generate a key pair:
 
 ```
-python -m crypto_universal generate-keys
+crypto_universal generate-keys
 ```
 
 The first line of output is the base64 encoded private key and the second
 line is the base64 encoded public key.  Encrypt a message:
 
 ```
-python -m crypto_universal encrypt <base64-public-key> "hello"
+crypto_universal encrypt <base64-public-key> "hello"
 ```
 
 Decrypt a message:
 
 ```
-python -m crypto_universal decrypt <base64-private-key> <ciphertext>
+crypto_universal decrypt <base64-private-key> <ciphertext>
 ```
 
 You can integrate these calls into a custom keyboard or other overlay so
@@ -42,13 +45,12 @@ when received.
 
 ## Android Integration
 
-A sample `InputMethodService` is provided under `examples/android`. It shows
-how to embed Crypto Universal in a custom keyboard so that any messaging
-application can encrypt outgoing text. The service loads an RSA key pair and
-replaces the typed message with the encrypted ciphertext when the user presses
-the "Encrypt" button.
+A minimal Gradle project is provided under `examples/android`. It implements a
+custom keyboard service that uses Crypto Universal to encrypt outgoing text. The
+keyboard exposes an "Encrypt" button which replaces the typed message with the
+encrypted ciphertext.
 
-To try it out, copy `SecureKeyboardService.kt` into an Android project, register
-it in `AndroidManifest.xml` and load your keys from storage. When the keyboard
-is active, you can compose a message, press "Encrypt" and send the resulting
-ciphertext through any chat app.
+Build the example with `./gradlew assembleDebug` and install the resulting APK
+on a device. Launch the `Secure Keyboard` app to enable the input method and
+then select it in the system settings. When active, you can compose a message,
+press "Encrypt" and send the ciphertext through any chat app.

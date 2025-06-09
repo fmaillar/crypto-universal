@@ -42,13 +42,12 @@ when received.
 
 ## Android Integration
 
-A sample `InputMethodService` is provided under `examples/android`. It shows
-how to embed Crypto Universal in a custom keyboard so that any messaging
-application can encrypt outgoing text. The service loads an RSA key pair and
-replaces the typed message with the encrypted ciphertext when the user presses
-the "Encrypt" button.
+A minimal Gradle project is provided under `examples/android`. It implements a
+custom keyboard service that uses Crypto Universal to encrypt outgoing text. The
+keyboard exposes an "Encrypt" button which replaces the typed message with the
+encrypted ciphertext.
 
-To try it out, copy `SecureKeyboardService.kt` into an Android project, register
-it in `AndroidManifest.xml` and load your keys from storage. When the keyboard
-is active, you can compose a message, press "Encrypt" and send the resulting
-ciphertext through any chat app.
+Build the example with `./gradlew assembleDebug` and install the resulting APK
+on a device. Launch the `Secure Keyboard` app to enable the input method and
+then select it in the system settings. When active, you can compose a message,
+press "Encrypt" and send the ciphertext through any chat app.

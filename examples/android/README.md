@@ -1,22 +1,20 @@
 # Android Secure Keyboard Example
 
-This directory contains a minimal example of an `InputMethodService` that
-integrates Crypto Universal's RSA encryption. The service exposes a simple
-"Encrypt" button that takes the text you have typed and replaces it with a
-base64-encoded ciphertext.
+This directory contains a minimal Gradle project that builds a custom
+`InputMethodService` using Crypto Universal. The keyboard exposes an
+**Encrypt** button which replaces the typed text with a base64
+ciphertext.
 
-The snippet in `SecureKeyboardService.kt` demonstrates:
+## Building
 
-1. Loading a base64 public/private key pair.
-2. Encrypting the current input field when the button is pressed.
-3. Committing the encrypted text back to the host application.
+1. From this directory run `./gradlew assembleDebug` or open the project in
+   Android Studio.
+2. Install `app/build/outputs/apk/debug/app-debug.apk` on your device.
 
-To use it:
+## Onboarding Flow
 
-1. Add this service to an Android project and register it in `AndroidManifest.xml`.
-2. Load your keys from app storage or a secure location.
-3. Build and install the app. When the keyboard is selected, you can encrypt
-   messages before sending them from any messaging application.
-
-Decryption can be added in a similar manner by reading the ciphertext from the
-message field and calling the RSA decrypt routine with the private key.
+After installing, launch the `Secure Keyboard` app. The only screen
+contains a button that opens the system input method settings. Enable the
+**Secure Keyboard** service and switch to it. When the keyboard is active
+you can type a message, press **Encrypt**, and send the resulting token
+through any chat application.

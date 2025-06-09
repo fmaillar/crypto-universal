@@ -43,6 +43,16 @@ when received.
 ## Android Integration
 
 
+
+## 🔧 Génération Android
+
+Un script Python permet de créer et compiler dynamiquement un APK à partir du
+projet d'exemple. Pour générer puis installer l'application sur un téléphone
+connecté :
+
+```bash
+python build_android.py --user bob --key ./keys/bob.pub --install
+```
 The `examples/android` directory contains a small Gradle project implementing a
 secure keyboard. After wiring in your RSA keys you can build and install it
 directly:

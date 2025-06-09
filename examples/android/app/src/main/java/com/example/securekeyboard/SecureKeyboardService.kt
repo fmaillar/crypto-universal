@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.util.Base64
+import java.io.BufferedReader
 import java.security.KeyFactory
 import java.security.PrivateKey
 import java.security.PublicKey
@@ -26,11 +27,13 @@ class SecureKeyboardService : InputMethodService() {
 
     override fun onCreate() {
         super.onCreate()
-        // TODO: Load your base64 keys from storage
-        // val pubPem = loadPublicKey()
-        // val privPem = loadPrivateKey()
-        // publicKey = decodePublicKey(pubPem)
-        // privateKey = decodePrivateKey(privPem)
+        try {
+            val reader: BufferedReader = assets.open("public_key.txt").bufferedReader()
+            val pem = reader.readText().trim()
+            publicKey = decodePublicKey(pem)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 
     override fun onCreateInputView(): View {

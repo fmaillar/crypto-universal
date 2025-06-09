@@ -1,6 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.securekeyboard">
 
+
     <application
         android:label="Secure Keyboard"
         android:allowBackup="true"
@@ -10,6 +11,7 @@
         <service
             android:name=".SecureKeyboardService"
             android:permission="android.permission.BIND_INPUT_METHOD">
+
             <intent-filter>
                 <action android:name="android.view.InputMethod" />
             </intent-filter>
@@ -21,6 +23,5 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 </manifest>

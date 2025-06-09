@@ -42,6 +42,7 @@ when received.
 
 ## Android Integration
 
+
 The `examples/android` directory contains a small Gradle project implementing a
 secure keyboard. After wiring in your RSA keys you can build and install it
 directly:
@@ -54,3 +55,4 @@ cd examples/android
 Launch the installed app and tap **Enable Secure Keyboard**. This opens the
 system input method settings so you can enable the keyboard. Once selected, any
 app can use the keyboard to encrypt text with the **Encrypt** button.
+
